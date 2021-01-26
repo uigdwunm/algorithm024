@@ -24,7 +24,6 @@ public class Assignment_283_move_zeroes {
     }
 
     public static void main(String[] args) {
-
         Assignment_283_move_zeroes solution = new Assignment_283_move_zeroes();
         int[] nums = {0, 1, 0, 3, 12};
         solution.moveZeroes(nums);
