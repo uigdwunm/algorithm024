@@ -1,5 +1,11 @@
 package Week_01.assignment_641_design_circular_deque;
 
+/**
+ * Description
+ *
+ * @author zhaolaiyuan
+ * Date 2021/1/29 8:46
+ **/
 class MyCircularDeque2 {
 
     private int[] tables;
@@ -30,7 +36,8 @@ class MyCircularDeque2 {
         }
         this.head = this.forward(head);
         if (this.isEmpty()) {
-            tail = this.forward(tail);
+            // 数组实现的关键是保证 插入第一个节点时 ，头尾指针一致。
+            tail = head;
         }
 
         tables[head] = value;
@@ -43,11 +50,11 @@ class MyCircularDeque2 {
         if (this.isFull()) {
             return false;
         }
+        this.tail = this.backword(tail);
         if (this.isEmpty()) {
-            head = this.backword(head);
+            head = tail;
         }
 
-        this.tail = this.backword(tail);
         tables[tail] = value;
         size++;
         return true;
@@ -61,9 +68,9 @@ class MyCircularDeque2 {
 
         this.head = backword(head);
         size--;
-        if (this.isEmpty()) {
-            tail = head;
-        }
+//        if (this.isEmpty()) {
+//            tail = head;
+//        }
         return true;
     }
 
@@ -74,9 +81,9 @@ class MyCircularDeque2 {
         }
         this.tail = forward(tail);
         size--;
-        if (this.isEmpty()) {
-            head = tail;
-        }
+//        if (this.isEmpty()) {
+//            head = tail;
+//        }
         return true;
     }
 
